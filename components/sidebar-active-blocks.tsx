@@ -10,10 +10,11 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
 } from "@/components/ui/sidebar";
-import { type Block } from "@tradeblocks/lib/stores";
+import { type Block, useBlockStore } from "@tradeblocks/lib/stores";
 
 export function SidebarActiveBlocks({ activeBlock }: { activeBlock: Block }) {
   const [isSwitchDialogOpen, setIsSwitchDialogOpen] = useState(false);
+  const blockSwitchLocked = useBlockStore((state) => state.blockSwitchLocked);
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden border-t border-sidebar-border/60">
@@ -30,6 +31,7 @@ export function SidebarActiveBlocks({ activeBlock }: { activeBlock: Block }) {
             variant="ghost"
             size="sm"
             className="h-6 shrink-0 gap-1 px-2 text-xs"
+            disabled={blockSwitchLocked}
             onClick={() => setIsSwitchDialogOpen(true)}
           >
             <IconArrowsShuffle className="size-3" />

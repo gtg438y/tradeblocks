@@ -28,6 +28,11 @@ const routeMeta: Record<
     title: "Risk Simulator",
     description: "Monte Carlo projections using your uploaded trade history.",
   },
+  "/drawdown-optimizer": {
+    title: "Drawdown Optimizer",
+    description:
+      "Find per-strategy contract multipliers that minimize median max drawdown.",
+  },
   "/position-sizing": {
     title: "Position Sizing",
     description:

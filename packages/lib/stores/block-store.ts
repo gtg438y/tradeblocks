@@ -61,11 +61,14 @@ interface BlockStore {
   isInitialized: boolean;
   isStuck: boolean;
   error: string | null;
+  /** When true, block switching in the sidebar is disabled (e.g. during optimization). */
+  blockSwitchLocked: boolean;
 
   // Actions
   loadBlocks: () => Promise<void>;
   setActiveBlock: (blockId: string) => void;
   clearActiveBlock: () => void;
+  setBlockSwitchLocked: (locked: boolean) => void;
   addBlock: (
     block: Omit<Block, "created"> | Omit<Block, "id" | "created">
   ) => Promise<void>;
@@ -148,6 +151,7 @@ export const useBlockStore = create<BlockStore>((set, get) => ({
   isInitialized: false,
   isStuck: false,
   error: null,
+  blockSwitchLocked: false,
 
   // Load blocks from IndexedDB
   loadBlocks: async () => {
@@ -304,6 +308,10 @@ export const useBlockStore = create<BlockStore>((set, get) => ({
       })),
       activeBlockId: null,
     }));
+  },
+
+  setBlockSwitchLocked: (locked: boolean) => {
+    set({ blockSwitchLocked: locked });
   },
 
   addBlock: async (blockData) => {

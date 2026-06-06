@@ -8,6 +8,7 @@ import {
   IconLayoutDashboard,
   IconReportAnalytics,
   IconRouteSquare,
+  IconScale,
   IconSparkles,
   IconStack2,
   IconTimelineEvent,
@@ -64,6 +65,11 @@ const navData = {
       title: "Risk Simulator",
       href: "/risk-simulator",
       icon: IconRouteSquare,
+    },
+    {
+      title: "Drawdown Optimizer",
+      href: "/drawdown-optimizer",
+      icon: IconScale,
     },
     {
       title: "Correlation Matrix",
