@@ -115,9 +115,7 @@ export default function DrawdownOptimizerPage() {
   const [simulationPeriodValue, setSimulationPeriodValue] = useState(
     DRAWDOWN_OPTIMIZER_DEFAULTS.simulationPeriodValue
   );
-  const [simulationPeriodUnit, setSimulationPeriodUnit] = useState(
-    DRAWDOWN_OPTIMIZER_DEFAULTS.simulationPeriodUnit
-  );
+  const simulationPeriodUnit = DRAWDOWN_OPTIMIZER_DEFAULTS.simulationPeriodUnit;
   const [resamplePercentage, setResamplePercentage] = useState(
     DRAWDOWN_OPTIMIZER_DEFAULTS.resamplePercentage
   );

@@ -9,7 +9,6 @@ import {
   applyStrategyWeights,
   buildStrategySummaries,
   validateWeights,
-  validateStrategyWeights,
   validateOptimizerInputs,
   optimizeTradeWeights,
   optimizeStrategyWeights,
@@ -305,7 +304,7 @@ describe("mc-drawdown-optimizer", () => {
       );
     }
 
-    function defaultMcParams(trades: Trade[]): MonteCarloParams {
+    function defaultMcParams(): MonteCarloParams {
       return {
         simulationLength: 21,
         resampleMethod: "trades",
@@ -327,7 +326,7 @@ describe("mc-drawdown-optimizer", () => {
 
       const result = await optimizeTradeWeights({
         trades,
-        mcParams: defaultMcParams(trades),
+        mcParams: defaultMcParams(),
         searchSimulations: 100,
         finalSimulations: 150,
         weightBounds: weightConstraints,
@@ -353,7 +352,7 @@ describe("mc-drawdown-optimizer", () => {
 
       const result = await optimizeTradeWeights({
         trades,
-        mcParams: defaultMcParams(trades),
+        mcParams: defaultMcParams(),
         searchSimulations: 150,
         finalSimulations: 200,
         weightBounds: weightConstraints,
@@ -377,7 +376,7 @@ describe("mc-drawdown-optimizer", () => {
       await expect(
         optimizeTradeWeights({
           trades,
-          mcParams: defaultMcParams(trades),
+          mcParams: defaultMcParams(),
           searchSimulations: 50,
           finalSimulations: 50,
           weightBounds: weightConstraints,
@@ -396,7 +395,7 @@ describe("mc-drawdown-optimizer", () => {
       await expect(
         optimizeTradeWeights({
           trades,
-          mcParams: defaultMcParams(trades),
+          mcParams: defaultMcParams(),
           searchSimulations: 50,
           finalSimulations: 50,
           weightBounds: weightConstraints,
@@ -414,7 +413,7 @@ describe("mc-drawdown-optimizer", () => {
 
       await optimizeTradeWeights({
         trades,
-        mcParams: defaultMcParams(trades),
+        mcParams: defaultMcParams(),
         searchSimulations: 50,
         finalSimulations: 50,
         weightBounds: weightConstraints,
@@ -439,7 +438,7 @@ describe("mc-drawdown-optimizer", () => {
         revalidateCustomWeights({
           trades,
           weights,
-          mcParams: defaultMcParams(trades),
+          mcParams: defaultMcParams(),
           finalSimulations: 100,
           constraints: weightConstraints,
         })
@@ -455,7 +454,7 @@ describe("mc-drawdown-optimizer", () => {
       const result = revalidateCustomWeights({
         trades,
         weights,
-        mcParams: defaultMcParams(trades),
+        mcParams: defaultMcParams(),
         finalSimulations: 175,
         constraints: weightConstraints,
         randomSeed: 42,
@@ -484,7 +483,7 @@ describe("mc-drawdown-optimizer", () => {
       const trades = createSyntheticTrades();
       const result = await optimizeStrategyWeights({
         trades,
-        mcParams: defaultMcParams(trades),
+        mcParams: defaultMcParams(),
         searchSimulations: 50,
         finalSimulations: 60,
         weightBounds: weightConstraints,
@@ -512,7 +511,7 @@ describe("mc-drawdown-optimizer", () => {
       const trades = createSyntheticTrades();
       const baseOptions = {
         trades,
-        mcParams: defaultMcParams(trades),
+        mcParams: defaultMcParams(),
         searchSimulations: 80,
         finalSimulations: 100,
         weightBounds: weightConstraints,
@@ -560,7 +559,7 @@ describe("mc-drawdown-optimizer", () => {
       );
     }
 
-    function defaultMcParams(trades: Trade[]): MonteCarloParams {
+    function defaultMcParams(): MonteCarloParams {
       return {
         simulationLength: 21,
         resampleMethod: "trades",
@@ -582,7 +581,7 @@ describe("mc-drawdown-optimizer", () => {
 
       const result = await optimizeStrategyWeights({
         trades,
-        mcParams: defaultMcParams(trades),
+        mcParams: defaultMcParams(),
         searchSimulations: 100,
         finalSimulations: 150,
         weightBounds: weightConstraints,
@@ -610,7 +609,7 @@ describe("mc-drawdown-optimizer", () => {
         revalidateCustomStrategyWeights({
           trades,
           strategyWeights: weights,
-          mcParams: defaultMcParams(trades),
+          mcParams: defaultMcParams(),
           finalSimulations: 100,
           constraints: weightConstraints,
         })
